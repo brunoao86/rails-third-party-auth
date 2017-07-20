@@ -20,8 +20,12 @@ module Biografando
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
 
       if File.exists?(env_file)
-        YAML.load(File.open(env_file))[Rails.env].each do
-          |key, value| ENV[key.to_s] = value
+        env_variables = YAML.load(File.open(env_file))[Rails.env]
+
+        if env_variables.present?
+          env_variables.each do
+            |key, value| ENV[key.to_s] = value
+          end
         end
       end
     end
