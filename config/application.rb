@@ -14,5 +14,16 @@ module Biografando
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Load Enviroment Variables
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+
+      if File.exists?(env_file)
+        YAML.load(File.open(env_file))[Rails.env].each do
+          |key, value| ENV[key.to_s] = value
+        end
+      end
+    end
   end
 end
