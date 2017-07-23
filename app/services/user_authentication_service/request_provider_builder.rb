@@ -3,7 +3,7 @@ class UserAuthenticationService::RequestProviderBuilder
     request_provider = raw_request['provider']
 
     if request_provider == 'google_oauth2'
-      RequestGoogle.new(raw_request.env["omniauth.auth"])
+      UserAuthenticationService::RequestGoogle.new(raw_request.env["omniauth.auth"])
     end
   end
 end
