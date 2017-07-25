@@ -17,6 +17,10 @@ class UserAuthenticationService
       user.provider         = request_provider.provider
       user.uid              = request_provider.uid
       user.name             = request_provider.user_name
+      user.gender           = request_provider.user_gender
+      user.email            = request_provider.user_email
+      user.image            = request_provider.user_image
+      user.locale           = request_provider.user_locale
       user.oauth_token      = request_provider.credentials_token
       user.oauth_expires_at = request_provider.credentials_expiration
       user.save!
