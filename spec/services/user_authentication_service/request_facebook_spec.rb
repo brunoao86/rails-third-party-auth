@@ -1,4 +1,4 @@
-describe UserAuthenticationService::RequestGoogle do
+describe UserAuthenticationService::RequestFacebook do
   pending 'initialization'
   pending 'kind of RequestBase'
   pending '#valid?'

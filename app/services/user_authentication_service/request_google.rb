@@ -1,8 +1,7 @@
-class UserAuthenticationService::RequestGoogle
-  attr_reader :provider, :uid, :user_name, :user_gender, :user_email, :user_image,
-              :user_locale, :credentials_token, :credentials_expiration
+class UserAuthenticationService::RequestGoogle < UserAuthenticationService::RequestBase
+  def initialize(raw_request)
+    google_request = raw_request.env["omniauth.auth"]
 
-  def initialize(google_request)
     @provider                 = 'google'
     @uid                      = google_request.uid
     @user_name                = google_request.info.name

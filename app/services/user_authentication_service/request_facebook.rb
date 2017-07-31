@@ -1,7 +1,4 @@
-class UserAuthenticationService::RequestFacebook
-  attr_reader :provider, :uid, :user_name, :user_gender, :user_email, :user_image,
-              :user_locale, :credentials_token, :credentials_expiration
-
+class UserAuthenticationService::RequestFacebook < UserAuthenticationService::RequestBase
   def initialize(raw_request)
     facebook_request = raw_request.env["omniauth.auth"]
     strategy         = raw_request.env['omniauth.strategy']
