@@ -4,6 +4,8 @@ class UserAuthenticationService::RequestProviderBuilder
 
     if request_provider == 'google_oauth2'
       UserAuthenticationService::RequestGoogle.new(raw_request.env["omniauth.auth"])
+    elsif request_provider == 'facebook'
+      UserAuthenticationService::RequestFacebook.new(raw_request)
     end
   end
 end
