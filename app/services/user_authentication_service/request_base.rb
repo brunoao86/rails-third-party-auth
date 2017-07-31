@@ -3,6 +3,6 @@ class UserAuthenticationService::RequestBase
               :user_locale, :credentials_token, :credentials_expiration
 
   def valid?
-    raise 'The method valid? must be implemented'
+    raise NoMethodError
   end
 end
