@@ -30,6 +30,7 @@ group :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-collection_matchers', '~> 1.1.3'
   gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'simplecov', '~> 0.14.1', :require => false
 end
 
 group :development, :test do
