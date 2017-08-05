@@ -4,18 +4,28 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
     strategy         = raw_request.env['omniauth.strategy']
 
     @provider                 = 'facebook'
+    @credentials_token        = facebook_request.credentials.token
     @uid                      = facebook_request.uid
     @user_name                = facebook_request.info.name
-    # @user_gender              = facebook_request.extra.raw_info.gender
+    @user_gender              = extra_information['gender']
     @user_email               = facebook_request.info.email
     @user_image               = facebook_request.info.image
-    # @user_locale              = facebook_request.extra.raw_info.locale
-    @credentials_token        = facebook_request.credentials.token
+    @user_locale              = extra_information['locale']
     @credentials_expiration   = Time.at(facebook_request.credentials.expires_at)
     @request_validation_token = strategy.options.client_id
   end
 
   def valid?
     @request_validation_token === ENV['FACEBOOK_CLIENT_ID']
+  end
+
+  private
+
+  def extra_information
+    @extra_information ||= koala_facebook_api_service.get_object("me?fields=gender,locale")
+  end
+
+  def koala_facebook_api_service
+    Koala::Facebook::API.new(@credentials_token)
   end
 end
