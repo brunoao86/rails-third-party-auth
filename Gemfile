@@ -32,6 +32,8 @@ group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'simplecov', '~> 0.14.1', :require => false
   gem 'database_cleaner', '~> 1.6.1'
+  gem 'faker', '~> 1.4.3'
+  gem 'factory_girl_rails', '~> 4.8.0'
 end
 
 group :development, :test do
