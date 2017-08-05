@@ -31,6 +31,7 @@ group :test do
   gem 'rspec-collection_matchers', '~> 1.1.3'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'simplecov', '~> 0.14.1', :require => false
+  gem 'database_cleaner', '~> 1.6.1'
 end
 
 group :development, :test do
