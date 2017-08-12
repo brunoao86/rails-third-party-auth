@@ -29,6 +29,7 @@ gem "koala", "~> 3.0.0"
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-collection_matchers', '~> 1.1.3'
+  gem 'rails-controller-testing', '~> 1.0.2'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'simplecov', '~> 0.14.1', :require => false
   gem 'database_cleaner', '~> 1.6.1'
