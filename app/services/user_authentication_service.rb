@@ -1,4 +1,6 @@
 class UserAuthenticationService
+  class InvalidRequest < StandardError; end
+
   attr_reader :request_provider
 
   def initialize(raw_request)
@@ -6,7 +8,7 @@ class UserAuthenticationService
   end
 
   def user
-    raise 'Invalid Request' unless request_provider.valid?
+    raise InvalidRequest unless request_provider.valid?
 
     @user ||= User.where(provider: request_provider.provider,
                          uid: request_provider.uid).first_or_initialize
