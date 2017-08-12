@@ -5,6 +5,7 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
 
     @provider                 = 'facebook'
     @credentials_token        = facebook_request.credentials.token
+    @request_validation_token = strategy.options.client_id
     @uid                      = facebook_request.uid
     @user_name                = facebook_request.info.name
     @user_gender              = extra_information['gender']
@@ -12,7 +13,6 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
     @user_image               = facebook_request.info.image
     @user_locale              = extra_information['locale']
     @credentials_expiration   = Time.at(facebook_request.credentials.expires_at)
-    @request_validation_token = strategy.options.client_id
   end
 
   def valid?
@@ -22,7 +22,12 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
   private
 
   def extra_information
-    @extra_information ||= koala_facebook_api_service.get_object("me?fields=gender,locale")
+    if valid?
+      @extra_information ||= koala_facebook_api_service
+        .get_object("me?fields=gender,locale")
+    else
+      {}
+    end
   end
 
   def koala_facebook_api_service

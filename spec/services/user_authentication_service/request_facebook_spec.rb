@@ -63,6 +63,13 @@ describe UserAuthenticationService::RequestFacebook do
   it { expect(subject).to be_a_kind_of(UserAuthenticationService::RequestBase) }
 
   describe 'initialization' do
+    let(:valid_response) { true }
+
+    before do
+      allow_any_instance_of(described_class).to receive(:valid?)
+        .and_return(valid_response)
+    end
+
     describe 'provider' do
       it { expect(subject.instance_variable_get(:@provider)).to eq('facebook') }
     end
@@ -75,20 +82,12 @@ describe UserAuthenticationService::RequestFacebook do
       it { expect(subject.instance_variable_get(:@user_name)).to eq('dummy name') }
     end
 
-    describe 'user_gender' do
-      it { expect(subject.instance_variable_get(:@user_gender)).to eq('dummy gender') }
-    end
-
     describe 'user_email' do
       it { expect(subject.instance_variable_get(:@user_email)).to eq('dummy email') }
     end
 
     describe 'user_image' do
       it { expect(subject.instance_variable_get(:@user_image)).to eq('dummy image') }
-    end
-
-    describe 'user_locale' do
-      it { expect(subject.instance_variable_get(:@user_locale)).to eq('dummy locale') }
     end
 
     describe 'credentials_token' do
@@ -111,15 +110,49 @@ describe UserAuthenticationService::RequestFacebook do
       end
     end
 
-    describe 'singleton behavior' do
-      before { subject }
-
-      it 'initializes Koala::Facebook::API once' do
-        expect(Koala::Facebook::API).to have_received(:new).once
+    describe 'user_locale' do
+      context 'when request is valid' do
+        it { expect(subject.instance_variable_get(:@user_locale)).to eq('dummy locale') }
       end
 
-      it 'hits the Facebook API once' do
-        expect(koala_facebook_api_service).to have_received(:get_object).once
+      context 'when request is NOT valid' do
+        let(:valid_response) { false }
+
+        it { expect(subject.instance_variable_get(:@user_locale)).to be_nil }
+      end
+    end
+
+    describe 'user_gender' do
+      context 'when request is valid' do
+        it { expect(subject.instance_variable_get(:@user_gender)).to eq('dummy gender') }
+      end
+
+      context 'when request is NOT valid' do
+        let(:valid_response) { false }
+
+        it { expect(subject.instance_variable_get(:@user_gender)).to be_nil }
+      end
+    end
+
+    describe 'facebook API usage' do
+      before { subject }
+
+      context 'when request is valid' do
+        it 'initializes Koala::Facebook::API once' do
+          expect(Koala::Facebook::API).to have_received(:new).once
+        end
+
+        it 'hits the Facebook API once' do
+          expect(koala_facebook_api_service).to have_received(:get_object).once
+        end
+      end
+
+      context 'when request is NOT valid' do
+        let(:valid_response) { false }
+
+        it 'does NOT initialize Koala::Facebook::API' do
+          expect(Koala::Facebook::API).to_not have_received(:new)
+        end
       end
     end
   end
