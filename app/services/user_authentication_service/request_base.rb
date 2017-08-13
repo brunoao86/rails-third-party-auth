@@ -1,6 +1,39 @@
 class UserAuthenticationService::RequestBase
-  attr_reader :provider, :uid, :user_name, :user_gender, :user_email, :user_image,
-              :user_locale, :credentials_token, :credentials_expiration
+   def provider
+     raise NoMethodError
+   end
+
+   def uid
+     raise NoMethodError
+   end
+
+   def user_name
+     raise NoMethodError
+   end
+
+   def user_gender
+     raise NoMethodError
+   end
+
+   def user_email
+     raise NoMethodError
+   end
+
+   def user_image_url
+     raise NoMethodError
+   end
+
+   def user_locale
+     raise NoMethodError
+   end
+
+   def credentials_token
+     raise NoMethodError
+   end
+
+   def credentials_expiration
+     raise NoMethodError
+   end
 
   def valid?
     raise NoMethodError
