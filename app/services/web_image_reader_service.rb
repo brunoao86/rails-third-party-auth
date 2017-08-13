@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'open_uri_redirections'
 require 'base64'
 
 class WebImageReaderService
@@ -11,7 +12,7 @@ class WebImageReaderService
   end
 
   def image
-    @image ||= open(url).read
+    @image ||= open(url, allow_redirections: :safe).read
   end
 
   def image_base64

@@ -26,7 +26,9 @@ describe WebImageReaderService do
     let(:opened_image) { double('opened_image') }
 
     before do
-      allow(subject).to receive(:open).with(url).and_return(opened_image)
+      allow(subject).to receive(:open)
+        .with(url, allow_redirections: :safe).and_return(opened_image)
+
       allow(opened_image).to receive(:read).and_return(image)
     end
 
