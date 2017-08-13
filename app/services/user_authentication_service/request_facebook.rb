@@ -1,22 +1,57 @@
 class UserAuthenticationService::RequestFacebook < UserAuthenticationService::RequestBase
-  def initialize(raw_request)
-    facebook_request = raw_request.env["omniauth.auth"]
-    strategy         = raw_request.env['omniauth.strategy']
+  attr_reader :request_auth, :request_strategy
 
-    @provider                 = 'facebook'
-    @credentials_token        = facebook_request.credentials.token
-    @request_validation_token = strategy.options.client_id
-    @uid                      = facebook_request.uid
-    @user_name                = facebook_request.info.name
-    @user_gender              = extra_information['gender']
-    @user_email               = facebook_request.info.email
-    @user_image               = facebook_request.info.image
-    @user_locale              = extra_information['locale']
-    @credentials_expiration   = Time.at(facebook_request.credentials.expires_at)
+  def initialize(raw_request)
+    @request_auth     = raw_request.env["omniauth.auth"]
+    @request_strategy = raw_request.env['omniauth.strategy']
+  end
+
+  def provider
+    'facebook'
+  end
+
+  def uid
+    @uid ||= request_auth.uid
+  end
+
+  def user_name
+    @user_name ||= request_auth.info.name
+  end
+
+  def user_gender
+    @user_gender ||= extra_information['gender']
+  end
+
+  def user_email
+    @user_email ||= request_auth.info.email
+  end
+
+  def raw_image_url
+    @raw_image_url ||= request_auth.info.image
+  end
+
+  def user_image_url
+    "#{raw_image_url}?type=large" if raw_image_url.present?
+  end
+
+  def user_locale
+    @user_locale ||= extra_information['locale']
+  end
+
+  def credentials_token
+    @credentials_token ||= request_auth.credentials.token
+  end
+
+  def credentials_expiration
+    @credentials_expiration ||= Time.at(request_auth.credentials.expires_at)
+  end
+
+  def request_validation_token
+    @request_validation_token ||= request_strategy.options.client_id
   end
 
   def valid?
-    @request_validation_token === ENV['FACEBOOK_CLIENT_ID']
+    request_validation_token === ENV['FACEBOOK_CLIENT_ID']
   end
 
   private
@@ -31,6 +66,6 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
   end
 
   def koala_facebook_api_service
-    Koala::Facebook::API.new(@credentials_token)
+    Koala::Facebook::API.new(credentials_token)
   end
 end
