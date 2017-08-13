@@ -72,8 +72,8 @@ describe UserAuthenticationService do
 
   describe '#authenticate!' do
     let(:user) { FactoryGirl.create(:user) }
-
     let(:expiration_date) { DateTime.tomorrow.at_end_of_day }
+    let(:user_email_url) { 'http://dummy_user_image_url' }
 
     let(:request_provider) do
       double('request_provider',
@@ -82,14 +82,24 @@ describe UserAuthenticationService do
              user_name: 'dummy user_name',
              user_gender: 'dummy user_gender',
              user_email: 'dummy user_email',
-             user_image: 'dummy user_image',
+             user_image_url: user_email_url,
              user_locale: 'dummy user_locale',
              credentials_token: 'dummy credentials_token',
              credentials_expiration: expiration_date
             )
     end
 
-    before { allow(subject).to receive(:user).and_return(user) }
+    let(:web_image_reader_service) { double('web_image_reader_service') }
+
+    before do
+      allow(subject).to receive(:user).and_return(user)
+
+      allow(WebImageReaderService).to receive(:new)
+        .with(user_email_url).and_return(web_image_reader_service)
+
+      allow(web_image_reader_service).to receive(:image_base64)
+        .and_return('dummy_im4g3_b4s364')
+    end
 
     let(:logged_user) { subject.authenticate! }
 
@@ -114,8 +124,12 @@ describe UserAuthenticationService do
         it { expect(logged_user.email).to eq('dummy user_email') }
       end
 
+      describe 'image_url' do
+        it { expect(logged_user.image_url).to eq(user_email_url) }
+      end
+
       describe 'image' do
-        it { expect(logged_user.image).to eq('dummy user_image') }
+        it { expect(logged_user.image).to eq('dummy_im4g3_b4s364') }
       end
 
       describe 'locale' do
