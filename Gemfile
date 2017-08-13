@@ -26,6 +26,8 @@ gem "koala", "~> 3.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
+gem 'open_uri_redirections', '~> 0.2.1'
+
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rspec-collection_matchers', '~> 1.1.3'
