@@ -15,6 +15,11 @@ module Biografando
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # Load presenters
+    config.after_initialize do |app|
+      app.config.paths.add 'app/presenters', :eager_load => true
+    end
+
     # Load Enviroment Variables
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
