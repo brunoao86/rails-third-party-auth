@@ -1,0 +1,23 @@
+<div class="row session">
+  <div class="col-sm-6 col-sm-offset-3 session-box-login">
+    <h2 class="session-box-login-title">Please sign in</h2>
+  <%= link_to "/auth/google_oauth2", class: 'btn btn-lg btn-primary btn-block' do %>
+    Sign in with Google <%= icon('google') %>
+  <% end %>
+
+  <%= link_to "/auth/facebook", class: 'btn btn-lg btn-primary btn-block' do %>
+    Sign in with Facebook <%= icon('facebook') %>
+  <% end %>
+  </div>
+
+  <div class="col-sm-6 col-sm-offset-3 session-box-login-footer text-center">
+    Made with <%= icon('heart', class: 'session-box-login-footer-heart') %> by
+    <%= link_to("@brunoao86", "https://www.github.com/brunoao86", target: '_blank') %>.
+
+    Code on
+    <%= link_to("https://www.github.com/brunoao86/rails-third-party-auth",
+                target: '_blank') do %>
+      Github <%= icon('github') %>
+    <% end %>
+  </div>
+</div>

@@ -1,3 +1,32 @@
-// Place all the styles related to the Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.session {
+  padding-top: 50px;
+
+  .session-box-login, .session-box-login-footer{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .session-box-login {
+    background-color: #e3e3e3;
+    padding-top: 4px;
+    padding-bottom: 30px;
+  }
+
+  .session-box-login-footer {
+    background-color: #ededed;
+    color: #686868;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    .session-box-login-footer-heart {
+      color: #da5656;
+    }
+  }
+
+  .session-box-login-title {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #bcbcbc;
+  }
+
+}
