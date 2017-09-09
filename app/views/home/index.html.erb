@@ -1,1 +1,87 @@
-<h2>Welcome! ;)</h2>
+<div class="row home">
+  <div class="col-sm-6 col-sm-offset-3 home-box-sign-out text-right">
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  </div>
+
+  <div class="col-sm-6 col-sm-offset-3 home-box">
+    <h2 class="home-box-title"><%= current_user.name %></h2>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= image_tag("data:image/png;base64,#{current_user.image}",
+                      class: "home-box-user-image") %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for(current_user, url: '#') do |form| %>
+          <div class="form-group">
+            <%= form.label :id %>
+            <%= form.text_field :id, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :provider %>
+            <%= form.text_field :provider, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :uid %>
+            <%= form.text_field :uid, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :gender %>
+            <%= form.text_field :gender, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :locale %>
+            <%= form.text_field :locale, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :image_url %>
+            <%= form.text_field :image_url, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :image %>
+            <%= form.text_area :image, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :oauth_token %>
+            <%= form.text_field :oauth_token, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :oauth_expires_at %>
+            <%= form.text_field :oauth_expires_at, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :created_at %>
+            <%= form.text_field :created_at, class: "form-control", disabled: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :updated_at %>
+            <%= form.text_field :updated_at, class: "form-control", disabled: true %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,32 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.home {
+  padding-top: 50px;
+
+  .home-box, .home-box-sign-out{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .home-box {
+    background-color: #e3e3e3;
+    padding-top: 4px;
+    padding-bottom: 30px;
+  }
+
+  .home-box-sign-out {
+    background-color: #ededed;
+    color: #686868;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .home-box-title {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #bcbcbc;
+  }
+
+  .home-box-user-image {
+    border-radius: 100px;
+  }
+
+}
