@@ -1,6 +1,6 @@
 <div class="row home">
   <div class="col-sm-6 col-sm-offset-3 home-box-sign-out text-right">
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <%= link_to t("signout"), signout_path, id: "sign_out" %>
   </div>
 
   <div class="col-sm-6 col-sm-offset-3 home-box">
@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <%= form_for(current_user, url: '#') do |form| %>
+        <%= form_for(current_user.presenter, url: '#') do |form| %>
           <div class="form-group">
             <%= form.label :id %>
             <%= form.text_field :id, class: "form-control", disabled: true %>
