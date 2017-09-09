@@ -1,0 +1,22 @@
+en_us:
+  activerecord:
+    models:
+      user: 'User'
+    attributes:
+      user/gender:
+        female: "Female"
+        male: "Male"
+      user:
+        id: "Code"
+        provider: "Auth Origin"
+        uid: "External ID"
+        name: "Name"
+        email: "Email"
+        gender: "Gender"
+        locale: "Locale"
+        image_url: "Image Url"
+        image: "Image Base64"
+        oauth_token: "OAuth Token"
+        oauth_expires_at: "Expiration Date"
+        created_at: "First access"
+        updated_at: "Last access"

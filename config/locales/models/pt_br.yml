@@ -1,0 +1,22 @@
+pt_br:
+  activerecord:
+    models:
+      user: 'Usuário'
+    attributes:
+      user/gender:
+        female: "Feminino"
+        male: "Masculino"
+      user:
+        id: "Código"
+        provider: "Origem"
+        uid: "ID Externo"
+        name: "Nome"
+        email: "E-mail"
+        gender: "Sexo"
+        locale: "Idioma"
+        image_url: "Url da Imagem"
+        image: "Imagem Base64"
+        oauth_token: "OAuth Token"
+        oauth_expires_at: "Data de expiração da sessão"
+        created_at: "Primeiro acesso"
+        updated_at: "Último acesso"
