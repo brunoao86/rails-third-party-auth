@@ -6,7 +6,8 @@ FactoryGirl.define do
     oauth_token      { Faker::Internet.password }
     oauth_expires_at { DateTime.tomorrow }
     email            { Faker::Internet.email }
-    image            { Faker::Internet.url }
+    image_url        { Faker::Internet.url }
+    image            { SecureRandom.base64 }
     gender           { Faker::Internet.email }
     locale           { ['male', 'female'].sample }
   end
