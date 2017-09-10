@@ -16,6 +16,8 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include ControllerSupport, type: :controller
+
   config.use_transactional_fixtures = false
 
   config.infer_spec_type_from_file_location!
