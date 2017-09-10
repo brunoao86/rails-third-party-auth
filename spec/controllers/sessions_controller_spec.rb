@@ -1,6 +1,7 @@
 describe SessionsController, type: :controller do
   describe '#create' do
     let(:logged_user) { FactoryGirl.create(:user) }
+
     let(:user_authentication_service) do
       double('user_authentication_service',
              authenticate!: logged_user)
@@ -39,7 +40,7 @@ describe SessionsController, type: :controller do
 
   describe '#destroy' do
     before do
-      session[:user_id] = 1234
+      sign_in
 
       delete :destroy
     end

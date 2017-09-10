@@ -1,6 +1,10 @@
 describe HomeController, type: :controller do
   describe '#index' do
-    before { get :index }
+    before do
+      sign_in
+
+      get :index
+    end
 
     it { expect(response).to render_template(:index) }
 
