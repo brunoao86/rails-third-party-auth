@@ -16,5 +16,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook,
     ENV.fetch('FACEBOOK_CLIENT_ID') { 'DUMMY_FACEBOOK_CLIENT_ID' },
     ENV.fetch('FACEBOOK_SECRET_ID') { 'DUMMY_FACEBOOK_SECRET_ID' },
-    scope: 'user_about_me'
+    scope: 'email,user_about_me'
 end
