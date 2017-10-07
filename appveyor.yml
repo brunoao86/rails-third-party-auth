@@ -18,6 +18,7 @@ before_test:
   - ruby -v
   - gem -v
   - bundle -v
+  - bundle exec rake db:migrate
 
 test_script:
   - bundle exec rake
