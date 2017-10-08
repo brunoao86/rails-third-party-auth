@@ -14,7 +14,7 @@ free account, so, maybe it will take some seconds to load.
 
 I started this app because I wanted to make it easier to start new projects without
 worrying myself about the authentication and to help others with code references and
-wiki tutorials (*coming soon*).
+[wiki tutorials](https://github.com/brunoao86/rails-third-party-auth/wiki).
 
 And also, because:
 
@@ -158,14 +158,7 @@ I will share the references that helped me:
 
 ### Google
 
-Go to the developer page of Google:
-
-- https://console.developers.google.com/
-
-And follow this post of [Rich on Rails](https://richonrails.com) to configure
-everything and get your keys:
-
-- [Google Authentication in Ruby On Rails](https://richonrails.com/articles/google-authentication-in-ruby-on-rails/)
+Wiki: [How to configure Google Auth on the app](https://github.com/brunoao86/rails-third-party-auth/wiki/How-to-configure-Google-Auth-on-the-app)
 
 ### Facebook
 
