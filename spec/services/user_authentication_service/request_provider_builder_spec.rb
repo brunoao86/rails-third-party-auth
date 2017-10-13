@@ -33,5 +33,19 @@ describe UserAuthenticationService::RequestProviderBuilder do
         expect(described_class.build(raw_request)).to eq(request_facebook)
       end
     end
+
+    context 'when it is a twitter request' do
+      let(:provider) { 'twitter' }
+      let(:request_twitter) { double('request_twitter') }
+
+      before do
+        allow(UserAuthenticationService::RequestTwitter).to receive(:new)
+          .with(raw_request).and_return(request_twitter)
+      end
+
+      it 'initializes RequestTwitter with raw_request' do
+        expect(described_class.build(raw_request)).to eq(request_twitter)
+      end
+    end
   end
 end
