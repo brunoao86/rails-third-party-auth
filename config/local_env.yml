@@ -1,3 +1,5 @@
+# This file must NOT be committed with your personal keys
+
 development:
   GOOGLE_CLIENT_ID: 'YOUR_GOOGLE_CLIENT_ID'
   GOOGLE_SECRET_ID: 'YOUR_GOOGLE_SECRET_ID'

@@ -18,7 +18,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 # Login with facebook
 gem "omniauth-facebook", "~> 4.0.0"
 # Login with twitter
-gem "omniauth-twitter", :github => 'arunagw/omniauth-twitter'
+gem "omniauth-twitter", "~> 1.4.0"
 gem "koala", "~> 3.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
