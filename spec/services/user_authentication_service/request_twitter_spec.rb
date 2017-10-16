@@ -73,7 +73,7 @@ describe UserAuthenticationService::RequestTwitter do
     end
 
     describe '#user_email' do
-      it { expect(subject.user_email).to eq('dummy email') }
+      it { expect(subject.user_email).to match(/not_available_yet_\+[0-9]+@twitter.com/) }
     end
 
     describe '#raw_image_url' do
@@ -112,7 +112,7 @@ describe UserAuthenticationService::RequestTwitter do
     context 'when raw_image_url is defined' do
       let(:raw_image_url) { 'http://dummy_raw_url' }
 
-      it { expect(subject.user_image_url).to eq('http://dummy_raw_url?size=200') }
+      it { expect(subject.user_image_url).to eq('http://dummy_raw_url') }
     end
 
     context 'when raw_image_url is NOT defined' do
