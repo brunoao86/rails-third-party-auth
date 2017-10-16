@@ -1,4 +1,3 @@
-
 class UserAuthenticationService::RequestTwitter < UserAuthenticationService::RequestBase
   attr_reader :request_auth
 
@@ -27,11 +26,11 @@ class UserAuthenticationService::RequestTwitter < UserAuthenticationService::Req
     # Twitter must be configured to release email as described in
     # https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-account-verify_credentials#request-a-user-s-email-address
     #
-    # TODO If not configured in the twitter app, this field will return nil, which
+    # TODO If not configured in the twitter app, request_auth.info.email will return nil, which
     # will create an error. Either we can raise an exception about this to inform
     # the developer to adjust their settings or set this to a default value if we
     # receive a nil value
-    @user_email ||= request_auth.info.email
+    @user_email ||= "not_available_yet_+#{Time.now.to_i}@twitter.com"
   end
 
   def raw_image_url
@@ -39,7 +38,7 @@ class UserAuthenticationService::RequestTwitter < UserAuthenticationService::Req
   end
 
   def user_image_url
-    "#{raw_image_url}?size=200" if raw_image_url.present?
+    "#{raw_image_url.gsub('_normal', '')}" if raw_image_url.present?
   end
 
   def user_locale
