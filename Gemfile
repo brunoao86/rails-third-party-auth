@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
-# Use postgresql as the database for Active Record
-# gem 'pg', '~> 0.18'
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -46,12 +43,18 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'
   # Console on exception pages or <%= console %>
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Run app in background
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  # Use postgresql as the database for Active Record
+  gem 'pg', '~> 0.18'
 end
 
 # Timezone Data
