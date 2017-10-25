@@ -18,6 +18,10 @@ gem "omniauth-facebook", "~> 4.0.0"
 gem "omniauth-github"
 # Login with twitter
 gem "omniauth-twitter", "~> 1.4.0"
+
+gem 'omniauth'
+gem 'omniauth-linkedin'
+
 gem "koala", "~> 3.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
