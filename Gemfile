@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.5'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 # Login with facebook
 gem "omniauth-facebook", "~> 4.0.0"
+# Login with github
+gem "omniauth-github"
 # Login with twitter
 gem "omniauth-twitter", "~> 1.4.0"
 

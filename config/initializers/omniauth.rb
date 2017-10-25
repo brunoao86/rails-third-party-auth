@@ -26,4 +26,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     ENV.fetch('LINKEDIN_CLIENT_ID'),
     ENV.fetch('LINKEDIN_SECRET_ID')
 
+  provider :github,
+    ENV.fetch('GITHUB_CLIENT_ID'),
+    ENV.fetch('GITHUB_SECRET_ID'),
+    scope: 'user'
 end

@@ -10,6 +10,8 @@ class UserAuthenticationService::RequestProviderBuilder
       UserAuthenticationService::RequestTwitter.new(raw_request)
     elsif request_provider == 'linkedin'
       UserAuthenticationService::RequestLinkedin.new(raw_request)
+    elsif request_provider == 'github'
+      UserAuthenticationService::RequestGithub.new(raw_request)
     end
   end
 end
