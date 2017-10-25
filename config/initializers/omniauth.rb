@@ -21,4 +21,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitter,
     ENV.fetch('TWITTER_CLIENT_ID'),
     ENV.fetch('TWITTER_SECRET_ID')
+
+  provider :linkedin,
+    ENV.fetch('LINKEDIN_CLIENT_ID'),
+    ENV.fetch('LINKEDIN_SECRET_ID')
+
 end
