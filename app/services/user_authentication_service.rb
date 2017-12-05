@@ -22,10 +22,14 @@ class UserAuthenticationService
       user.gender           = request_provider.user_gender
       user.email            = request_provider.user_email
       user.image_url        = request_provider.user_image_url
-      user.image            = web_image_reader_service.image_base64
       user.locale           = request_provider.user_locale
       user.oauth_token      = request_provider.credentials_token
       user.oauth_expires_at = request_provider.credentials_expiration
+
+      if request_provider.user_image_url
+        user.image = web_image_reader_service.image_base64
+      end
+
       user.save!
     end
   end
