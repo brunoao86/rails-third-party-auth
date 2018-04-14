@@ -31,7 +31,7 @@ class UserAuthenticationService::RequestLinkedin < UserAuthenticationService::Re
   end
 
   def user_image_url
-    "#{raw_image_url}?size=200" if raw_image_url.present?
+    "#{raw_image_url}" if raw_image_url.present?
   end
 
   def user_locale
