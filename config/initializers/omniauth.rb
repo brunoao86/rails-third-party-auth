@@ -16,7 +16,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook,
     ENV.fetch('FACEBOOK_CLIENT_ID'),
     ENV.fetch('FACEBOOK_SECRET_ID'),
-    scope: 'email,user_about_me'
+    scope: 'email'
 
   provider :twitter,
     ENV.fetch('TWITTER_CLIENT_ID'),
