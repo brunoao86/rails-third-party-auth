@@ -27,7 +27,7 @@ class UserAuthenticationService
       user.oauth_expires_at = request_provider.credentials_expiration
 
       if request_provider.user_image_url
-        user.image = web_image_reader_service.image_base64
+        user.image = web_image_reader_service.image_base64 rescue nil
       end
 
       user.save!
