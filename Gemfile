@@ -11,7 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Login with google
-gem "omniauth-google-oauth2", "~> 0.2.1"
+gem "omniauth-google-oauth2", ">= 0.2.1"
 # Login with facebook
 gem "omniauth-facebook", "~> 4.0.0"
 # Login with github
