@@ -26,6 +26,10 @@ gem 'omniauth-linkedin'
 gem "rails-html-sanitizer", ">= 1.0.4"
 gem "nokogiri", ">= 1.8.2"
 gem "loofah", ">= 2.2.1"
+gem "sprockets", ">= 3.7.2"
+gem "ffi", ">= 1.9.24"
+
+
 
 
 gem "koala", "~> 3.0.0"
