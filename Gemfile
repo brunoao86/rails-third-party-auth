@@ -22,6 +22,12 @@ gem "omniauth-twitter", "~> 1.4.0"
 gem 'omniauth'
 gem 'omniauth-linkedin'
 
+# github vunerability alerts
+gem "rails-html-sanitizer", ">= 1.0.4"
+gem "nokogiri", ">= 1.8.2"
+gem "loofah", ">= 2.2.1"
+
+
 gem "koala", "~> 3.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
