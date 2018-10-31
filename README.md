@@ -1,6 +1,6 @@
 # Rails third-party auth
 
-A base Ruby on Rails application with Google and Facebook authentication (by now).
+A base Ruby on Rails application with the following third-party authentication: Google, Facebook, Twitter, LinkedIn and Github.
 
 ## Demo
 
@@ -172,6 +172,33 @@ to configure your app and get your keys.
 
 *Note:* Configure the *callback route* at the same way you did for Google.
 
+### Twitter
+
+Please, check the tutorial below, specially the section **Setting Up OmniAuth-Twitter**:
+https://code.tutsplus.com/tutorials/twitter-sign-in-for-rails-application--cms-28097
+
+My callback URL for the Heroku app is: https://rails-third-party-auth.herokuapp.com/auth/twitter/callback
+
+If you are running it locally, your callback will be something like http://localhost:3000/auth/twitter/callback
+
+### LinkedIn
+
+Please, check the tutorial below to create your app on Linkedin:
+https://auth0.com/docs/connections/social/linkedin
+
+My callback URL for the Heroku app is: https://rails-third-party-auth.herokuapp.com/auth/linkedin/callback
+
+If you are running it locally, your callback will be something like http://localhost:3000/auth/linkedin/callback
+
+### GitHub
+
+Please, check the tutorial below to create your app on GitHub:
+https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/
+
+My callback URL for the Heroku app is: https://rails-third-party-auth.herokuapp.com/auth/github/callback
+
+If you are running it locally, your callback will be something like http://localhost:3000/auth/github/callback
+
 ### I have my keys. Now what?
 
 Now it's the easiest part!
@@ -229,22 +256,8 @@ This is a small project, my first one, so, any contribution will be enjoyed! :he
 
 As I said, I'm working on the Wiki to explain more about:
 
-- Configure your app on Google Developer
-
-- Configure your app on Facebook Developer
+- Configure your app on Facebook Developer, Twitter, LinkedIn and GitHub
 
 - Deploying your app with Heroku
 
 - How to add new third-party authentications
-
-### Implementation
-
-I want to put more third-party authentication, like:
-
-- GitHub
-
-- LinkedIn
-
-- Twitter
-
-And so on...
