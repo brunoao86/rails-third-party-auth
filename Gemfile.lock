@@ -44,9 +44,9 @@ GEM
     autoprefixer-rails (9.6.4)
       execjs
     bindex (0.8.1)
-    bootstrap-sass (3.3.7)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+      sassc (>= 2.0.0)
     builder (3.2.3)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -141,6 +141,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     open_uri_redirections (0.2.1)
+    pg (0.21.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -214,6 +215,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.2.1)
+      ffi (~> 1.9)
     shoulda-matchers (3.1.3)
       activesupport (>= 4.0.0)
     simplecov (0.14.1)
@@ -254,7 +257,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.7)
+  bootstrap-sass (~> 3.4.1)
   database_cleaner (~> 1.6.1)
   factory_girl_rails (~> 4.8.0)
   faker (~> 1.4.3)
@@ -273,6 +276,7 @@ DEPENDENCIES
   omniauth-linkedin
   omniauth-twitter (~> 1.4.0)
   open_uri_redirections (~> 0.2.1)
+  pg (~> 0.18)
   pry-byebug (~> 3.0.1)
   puma (~> 3.7)
   rails (~> 5.1.2)
