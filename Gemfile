@@ -36,7 +36,7 @@ gem "koala", "~> 3.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'jquery-rails', '~> 4.3.1'
 
