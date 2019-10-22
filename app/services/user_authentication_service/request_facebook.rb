@@ -19,7 +19,7 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
   end
 
   def user_gender
-    @user_gender ||= extra_information['gender']
+    @user_gender ||= extra_information['gender'] # FIXME Not working anymore =(
   end
 
   def user_email
@@ -35,7 +35,7 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
   end
 
   def user_locale
-    @user_locale ||= extra_information['locale']
+    @user_locale = extra_information['locale'] || :en # FIXME Not working anymore =(
   end
 
   def credentials_token
