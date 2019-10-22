@@ -44,9 +44,10 @@ GEM
     autoprefixer-rails (9.6.5)
       execjs
     bindex (0.8.1)
-    bootstrap-sass (3.3.7)
+    bindex (0.8.1)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+      sassc (>= 2.0.0)
     builder (3.2.3)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -254,7 +255,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.7)
+  bootstrap-sass (~> 3.4.1)
   database_cleaner (~> 1.6.1)
   factory_girl_rails (~> 4.8.0)
   faker (~> 1.4.3)
