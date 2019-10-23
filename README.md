@@ -203,8 +203,7 @@ If you are running it locally, your callback will be something like http://local
 
 Now it's the easiest part!
 
-Just open the file [config/local_env.yml](https://github.com/brunoao86/rails-third-party-auth/blob/master/config/local_env.yml)
-and put your keys for development environment.
+Just rename the file `config/local_env.yml.sample` to `config/local_env.yml` and put your keys for development environment.
 
 And after that, stop the server and run it again.
 

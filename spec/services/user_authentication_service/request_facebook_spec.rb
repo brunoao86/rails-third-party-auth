@@ -99,7 +99,7 @@ describe UserAuthenticationService::RequestFacebook do
       end
 
       describe '#user_locale' do
-        it { expect(subject.user_locale).to be_nil }
+        it { expect(subject.user_locale).to eq(:en) }
       end
 
       describe 'facebook API usage' do

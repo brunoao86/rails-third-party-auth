@@ -13,10 +13,16 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       }
     }
 
+  facebook_api_version = ENV.fetch('FACEBOOK_API_VERSION')
   provider :facebook,
     ENV.fetch('FACEBOOK_CLIENT_ID'),
     ENV.fetch('FACEBOOK_SECRET_ID'),
-    scope: 'email'
+    {
+      client_options: {
+        site: "https://graph.facebook.com/#{facebook_api_version}",
+        authorize_url: "https://www.facebook.com/#{facebook_api_version}/dialog/oauth"
+      }
+    }
 
   provider :twitter,
     ENV.fetch('TWITTER_CLIENT_ID'),
