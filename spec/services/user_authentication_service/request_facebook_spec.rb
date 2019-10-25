@@ -81,84 +81,17 @@ describe UserAuthenticationService::RequestFacebook do
       it { expect(subject.credentials_token).to eq('dummy token') }
     end
 
+    describe '#user_locale' do
+      it { expect(subject.user_locale).to eq(:en) }
+    end
+
+    describe '#user_gender' do
+      it { expect(subject.user_gender).to eq(nil) }
+    end
+
     describe '#credentials_expiration' do
       it do
         expect(subject.credentials_expiration).to eq(Time.at(1501690375))
-      end
-    end
-  end
-
-  describe 'dependents from facebook api' do
-    before { allow(subject).to receive(:valid?).and_return(valid_response) }
-
-    context 'when request is NOT valid' do
-      let(:valid_response) { false }
-
-      describe '#user_gender' do
-        it { expect(subject.user_gender).to be_nil }
-      end
-
-      describe '#user_locale' do
-        it { expect(subject.user_locale).to eq(:en) }
-      end
-
-      describe 'facebook API usage' do
-        before do
-          allow(Koala::Facebook::API).to receive(:new)
-        end
-
-        it 'does NOT initialize Koala::Facebook::API' do
-          subject.user_gender
-
-          expect(Koala::Facebook::API).to_not have_received(:new)
-        end
-      end
-    end
-
-    context 'when request is valid' do
-      let(:valid_response) { true }
-
-      before do
-        allow(subject).to receive(:credentials_token).and_return(credentials_token)
-
-        allow(Koala::Facebook::API).to receive(:new)
-          .with(credentials_token).and_return(koala_facebook_api_service)
-
-        allow(koala_facebook_api_service).to receive(:get_object)
-          .with("me?fields=gender,locale").and_return(graph_api_response)
-      end
-
-      let(:credentials_token) { 'dummy_token' }
-
-      let(:koala_facebook_api_service) { double('koala_facebook_api_service') }
-
-      let(:graph_api_response) do
-        {
-          'gender' => 'dummy gender',
-          'locale' => 'dummy locale'
-        }
-      end
-
-      describe '#user_gender' do
-        it { expect(subject.user_gender).to eq('dummy gender') }
-      end
-
-      describe '#user_locale' do
-        it { expect(subject.user_locale).to eq('dummy locale') }
-      end
-
-      describe 'facebook API usage' do
-        before do
-          subject.user_gender
-        end
-
-        it 'initializes Koala::Facebook::API once' do
-          expect(Koala::Facebook::API).to have_received(:new).once
-        end
-
-        it 'hits the Facebook API once' do
-          expect(koala_facebook_api_service).to have_received(:get_object).once
-        end
       end
     end
   end
@@ -198,25 +131,6 @@ describe UserAuthenticationService::RequestFacebook do
       let(:raw_image_url) { '' }
 
       it { expect(subject.user_image_url).to be_nil }
-    end
-  end
-
-  describe '#valid?' do
-    let(:dummy_token) { 'dUmmy_r3qu3st_t0k3n' }
-
-    before do
-      allow(subject).to receive(:request_validation_token).and_return(dummy_token)
-      ENV['FACEBOOK_CLIENT_ID'] = 'dUmmy_r3qu3st_t0k3n'
-    end
-
-    context 'when request validation token is equal to the environment' do
-      it { expect(subject.valid?).to eq(true) }
-    end
-
-    context 'when request validation token is NOT equal to the environment' do
-      let(:dummy_token) { 'd1ff3r3nt_dUmmy_r3qu3st_t0k3n' }
-
-      it { expect(subject.valid?).to eq(false) }
     end
   end
 end
