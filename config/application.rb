@@ -22,7 +22,8 @@ module MyRailsApp
 
     # Load Enviroment Variables
     config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      env_file_name = (Rails.env == 'test' ? 'local_env.yml.sample' : 'local_env.yml')
+      env_file = File.join(Rails.root, 'config', env_file_name)
 
       if File.exists?(env_file)
         env_variables = YAML.load(File.open(env_file))[Rails.env]

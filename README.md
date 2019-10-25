@@ -203,7 +203,7 @@ If you are running it locally, your callback will be something like http://local
 
 Now it's the easiest part!
 
-Just rename the file `config/local_env.yml.sample` to `config/local_env.yml` and put your keys for development environment.
+Just **copy** the file `config/local_env.yml.sample` (Used to run the tests) to `config/local_env.yml` and put your keys for development environment.
 
 And after that, stop the server and run it again.
 
