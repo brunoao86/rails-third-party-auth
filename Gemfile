@@ -29,10 +29,6 @@ gem "loofah", ">= 2.2.1"
 gem "sprockets", ">= 3.7.2"
 gem "ffi", ">= 1.9.24"
 
-
-
-
-gem "koala", "~> 3.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 

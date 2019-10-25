@@ -18,9 +18,7 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
     @user_name ||= request_auth.info.name
   end
 
-  def user_gender
-    @user_gender ||= extra_information['gender'] # FIXME Not working anymore =(
-  end
+  def user_gender; end
 
   def user_email
     @user_email ||= request_auth.info.email
@@ -35,7 +33,7 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
   end
 
   def user_locale
-    @user_locale = extra_information['locale'] || :en # FIXME Not working anymore =(
+    @user_locale ||= :en
   end
 
   def credentials_token
@@ -48,24 +46,5 @@ class UserAuthenticationService::RequestFacebook < UserAuthenticationService::Re
 
   def request_validation_token
     @request_validation_token ||= request_strategy.options.client_id
-  end
-
-  def valid?
-    request_validation_token === ENV['FACEBOOK_CLIENT_ID']
-  end
-
-  private
-
-  def extra_information
-    if valid?
-      @extra_information ||= koala_facebook_api_service
-        .get_object("me?fields=gender,locale")
-    else
-      {}
-    end
-  end
-
-  def koala_facebook_api_service
-    Koala::Facebook::API.new(credentials_token)
   end
 end
