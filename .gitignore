@@ -8,3 +8,5 @@
 /yarn-error.log
 .byebug_history
 config/local_env.yml
+my_rails_app_db_development
+my_rails_app_db_test
