@@ -71,4 +71,4 @@ group :production do
 end
 
 # Timezone Data
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
+gem 'tzinfo-data'
