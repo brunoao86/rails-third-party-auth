@@ -4,7 +4,7 @@ cache:
   - vendor/bundle
 
 install:
-  - set PATH=C:\Ruby24\bin;%PATH%
+  - set PATH=C:\Ruby26\bin;%PATH%
   - bundle config --local path vendor/bundle
   - bundle install
   - bundle exec rake db:migrate RAILS_ENV=test
