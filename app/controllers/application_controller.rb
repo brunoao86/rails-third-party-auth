@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = current_user.locale.underscore if current_user
+    if current_user && current_user.locale.present?
+      I18n.locale = current_user.locale.underscore
+    end
   end
 end
