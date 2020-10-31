@@ -18,11 +18,10 @@ gem "omniauth-google-oauth2", ">= 0.2.1"
 gem "omniauth-facebook", "~> 4.0.0"
 # Login with github
 gem "omniauth-github"
+# Login with linkedin
+gem "omniauth-linkedin-oauth2"
 # Login with twitter
 gem "omniauth-twitter", "~> 1.4.0"
-
-gem 'omniauth'
-gem 'omniauth-linkedin'
 
 # github vunerability alerts
 gem "rails-html-sanitizer", ">= 1.0.4"
