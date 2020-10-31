@@ -27,7 +27,7 @@ class UserAuthenticationService::RequestLinkedin < UserAuthenticationService::Re
   end
 
   def raw_image_url
-    @raw_image_url ||= request_auth.info.image
+    @raw_image_url ||= request_auth.info.picture_url
   end
 
   def user_image_url
@@ -35,7 +35,10 @@ class UserAuthenticationService::RequestLinkedin < UserAuthenticationService::Re
   end
 
   def user_locale
-    @user_locale ||= request_auth.extra.raw_info.location.name
+    language = request_auth.extra.raw_info.firstName.preferredLocale.language
+    country = request_auth.extra.raw_info.firstName.preferredLocale.country
+
+    @user_locale ||= "#{language}_#{country}"
   end
 
   def credentials_token
@@ -43,14 +46,11 @@ class UserAuthenticationService::RequestLinkedin < UserAuthenticationService::Re
   end
 
   def credentials_expiration
-    @credentials_expiration ||= request_auth.extra.access_token.params["oauth_expires_in"]
-  end
-
-  def request_validation_token
-    @request_validation_token ||= request_auth.extra.access_token.consumer.key
+    @credentials_expiration ||= request_auth.credentials.expires_at
   end
 
   def valid?
-    request_validation_token === ENV['LINKEDIN_CLIENT_ID']
+    # FIXME: We do not have the access_token.token to verify anymore
+    true
   end
 end
