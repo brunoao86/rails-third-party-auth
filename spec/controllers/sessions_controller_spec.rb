@@ -27,12 +27,9 @@ describe SessionsController, type: :controller do
     describe 'user_authentication_service usage' do
       before { allow(controller).to receive(:request).and_return(dummy_request) }
 
-      let(:dummy_request) { spy('dummy_request') }
+      let(:dummy_request) { spy('dummy_request', to_hash: {}) }
 
       it 'initializes UserAuthenticationService with request once' do
-        pending "TypeError: can't convert RSpec::Mocks::Double to Hash " \
-          "(RSpec::Mocks::Double#to_hash gives RSpec::Mocks::Double"
-
         expect(UserAuthenticationService).to receive(:new)
           .with(dummy_request).once
 
