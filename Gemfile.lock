@@ -156,7 +156,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     open_uri_redirections (0.2.1)
-    pg (0.21.0)
+    pg (0.18.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -294,7 +294,7 @@ DEPENDENCIES
   omniauth-linkedin
   omniauth-twitter (~> 1.4.0)
   open_uri_redirections (~> 0.2.1)
-  pg (~> 0.18)
+  pg (= 0.18)
   pry-byebug (~> 3.0.1)
   puma (~> 3.12)
   rails (~> 6.0.3.4)
