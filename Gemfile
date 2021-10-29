@@ -12,6 +12,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# Mime type detection in ruby via file extension or file content
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 # Login with google
 gem "omniauth-google-oauth2", ">= 0.2.1"
 # Login with facebook
